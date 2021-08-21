@@ -1,0 +1,76 @@
+{
+  "extends": [
+    "react-app",
+    "eslint:recommended",
+    "airbnb",
+    "prettier",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "plugins": ["no-loops"],
+  "rules": {
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/prefer-default-export": "off",
+    "no-loops/no-loops": 2,
+    "react/jsx-fragments": ["error", "element"]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/typescript"
+      ],
+      "rules": {
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": "error",
+        "no-shadow": "off",
+        "camelcase": "off",
+        "react/jsx-filename-extension": [
+          1,
+          {
+            "extensions": [".tsx"]
+          }
+        ],
+        "import/no-extraneous-dependencies": [
+          "error",
+          { "devDependencies": ["**/__tests__/*.ts?(x)", "**/*.stories.tsx", "**/test.tsx"] }
+        ],
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          {
+            "js": "never",
+            "jsx": "never",
+            "ts": "never",
+            "tsx": "never"
+          }
+        ],
+        "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "react/require-default-props": "off"
+      },
+      "settings": {
+        "import/ignore": ["src/utils/test.tsx"]
+      }
+    },
+    {
+      "files": ["**/__tests__/*.ts?(x)", "**/*.stories.tsx", "**/test.tsx"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
