@@ -3,15 +3,17 @@ import { EStatus } from '../../enum/status'
 import { IList } from '../../interface/list'
 
 export interface IListItemState {
+    id: number
     name: string
     amount: number
-    participants: number
+    participants: string[]
 }
 
 const initialState = {
+    id: 0,
     name: '',
     amount: 0,
-    participants: 0
+    participants: []
 }
 
 const slice = createSlice({

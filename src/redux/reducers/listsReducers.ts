@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
+import {IList} from '../../interface/list'
 
 export interface IAllListsState {
-    lists: string[]
+    lists: IList[]
 }
 
 const initialState = {
@@ -12,9 +13,13 @@ const slice = createSlice({
     name: 'allLists',
     initialState,
     reducers: {
-        updateList: (state: IAllListsState, action): void => {
+        addList: (state: IAllListsState, action): void => {
             // eslint-disable-next-line no-param-reassign
-            state.lists = action.payload
+            state.lists = [...state.lists, action.payload]
+        },
+        removeList: (state: IAllListsState, action): void => {
+            // eslint-disable-next-line no-param-reassign
+            state.lists = state.lists.filter((list, id) => id !== action.payload)
         },
     },
 })

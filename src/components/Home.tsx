@@ -11,8 +11,9 @@ import {section} from './styles'
 
 const Home: React.FC = () => (
         <Fragment>
-            <section css={styles.titleSection}>
+            <section css={styles.header}>
                 <div css={styles.title}>Split Calculator</div>
+                <div css={styles.subtitle}>Good accounts make good friends</div>
             </section>
           <section css={styles.section}>
             <ListItem/>

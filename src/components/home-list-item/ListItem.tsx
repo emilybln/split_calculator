@@ -1,8 +1,10 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react'
 import React, { ChangeEvent, Fragment, useState, VFC } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import * as styles from '../styles'
+import { useDispatch } from 'react-redux'
+import * as styles from './styles'
 import { actions } from '../../redux/reducers/listsReducers'
-import { IState } from '../../redux/reducers/rootReducers'
 
 
 const ListItem : VFC = () => {
@@ -11,24 +13,25 @@ const ListItem : VFC = () => {
   const [listTitle, setListTitle] = useState('')
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => setListTitle(e.target.value)
-  const lists = useSelector((state: IState) => state.listsReducers.lists)
   const addNewList = () => {
-    const newList = lists.concat(listTitle)
-    dispatch(actions.updateList(newList))
-  }
+    setListTitle('')
+    dispatch(actions.addList({name: listTitle, amount: 0, participants: 0}))}
 
   return (
     <Fragment>
-    <section css={styles.listSection}>
-      <div css={styles.subtitle}>Toutes les listes</div>
-    <div>Ajouter une liste</div>
-    <input aria-label="add-list"
-           value={listTitle}
-           onChange={handleOnChange}
-           id={`list-${listTitle}`}
-    />
-    <button onClick={addNewList} type='button'>Ajouter</button>
-    </section>
+      <div css={styles.listOfLists}>
+        <div css={styles.addListTitle}>Create a bill resume to split </div>
+        <div css={styles.addListInput}>
+          <input aria-label="add-list"
+                 value={listTitle}
+                 onChange={handleOnChange}
+                 id={`list-${listTitle}`}
+                 css={styles.listNameInput}
+                 placeholder="Bill Name"
+          />
+          <button css={styles.addButton} onClick={addNewList} type='button'>+</button>
+        </div>
+      </div>
     </Fragment>
       )}
 
