@@ -1,14 +1,13 @@
-import {IListItemState, reducer as listItemReducers} from './listItemReducers'
-import {IAllListsState, reducer as listsReducers} from './listsReducers'
+import { combineReducers, createSelector } from '@reduxjs/toolkit'
+import { createSelectorHook } from 'react-redux'
+import listsReducers from './listsReducers'
 
+const rootReducer = combineReducers({
+  listsReducers,
+})
 
-export default {
-    listItemReducers,
-    listsReducers
-}
+export type RootState = ReturnType<typeof rootReducer>
 
-export interface IState {
-    listItemReducers : IListItemState
-    listsReducers : IAllListsState
-}
+export const useTypedSelector = createSelectorHook<RootState>()
 
+export default rootReducer

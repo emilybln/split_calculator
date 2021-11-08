@@ -1,5 +1,7 @@
 export interface IList {
-    name: string
-    amount: number
-    participants: string[]
+  id: number
+  name: string
+  amount: number
+  participants: string[]
+  isSelected: boolean
 }
