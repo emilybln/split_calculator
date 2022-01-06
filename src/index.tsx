@@ -7,7 +7,7 @@ import configureAppStore from './configureStore'
 const store = configureAppStore();
 
 ReactDOM.render(
-      <App  store={store}/>,
+      <App store={store}/>,
   document.getElementById('root')
 );
 
